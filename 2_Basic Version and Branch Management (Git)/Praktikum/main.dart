@@ -1,5 +1,5 @@
 import '';
 
-void main() {
+void main(List<String> args) {
   
 }
