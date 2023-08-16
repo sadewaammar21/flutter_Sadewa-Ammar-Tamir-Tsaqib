@@ -9,3 +9,4 @@ ketik git clone "ssh/https repository"
 2. cara mengeclone git hub menggunakan github dekstop dengan cara pilih current repository selanjutnya pilih add lalu pilih clone repository.
 3. ketika sudah di clone lalu pilih open visual studio jika sudah ada yang pengen diganti lalu masukkan commit dan deskripsi selanjutnya pilih push origin 
 4. lalu buka github web reload jika sudah tampil sesuai yang diinginkan berarti berhasil
+5. praktek pull request untuk mem merge brach dengan github dengan vscode 
