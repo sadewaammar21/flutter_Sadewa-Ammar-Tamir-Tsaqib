@@ -1,6 +1,7 @@
 2_Basic Version and Branch Management (Git)
 
-Hari ini paada tanggal 14 saya belajar mandiri terkait section 2 Basic Version and Branch Management (Git) dan telah mengerjakan tugas bagian pilihan ganda, summary. 
+Hari ini paada tanggal 15  saya belajar mandiri terkait section 2 Basic Version and Branch Management (Git) dan telah mengerjakan tugas bagian pilihan ganda, summary. 
+kemudian pada tanggal 16 mengikuti live mentoring dengan materi Introduction Mobile App Developer berdama mentor kak azka
 
 isi materi hari ini adalah
 1. cara mengeclone mengggunakan git bush dengan cara membuka git bush di folder yang telah ditentukan selanjutnya 
