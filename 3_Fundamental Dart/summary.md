@@ -13,4 +13,6 @@ pada materi ini saya mendapatkan ilmu
 1. cara memprogram menggunakan bahasa Dart debgan baik
 2. mempraktekan program menggunakan variabel dengan menyimpan data di variabel seusai dengan pengisian data
 3. mempraktekan program dengan inputan langsung atau inputan terminal
-
+4. pada latihan ini saya menggunakan bahasa pemrogaman dart dan menggunakan intenger untuk  menampung angka tetap, menggunakan 
+   double untuk bilangan desimal dan string untuk data dengan char huruf atau kata, lalu saya menggunakan print untuk menampilkan 
+   data
