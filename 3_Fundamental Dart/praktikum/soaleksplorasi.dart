@@ -6,7 +6,7 @@ void main() {
   print("Faktor dari angka tersebut adalah $angka");
 
   for (int i = 1; i <= angka; i++) {
-    if (angka % 1 == 0) {
+    if (angka % i == 0) {
       print(i);
     }
   }
