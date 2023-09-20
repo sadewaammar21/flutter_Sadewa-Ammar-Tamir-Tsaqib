@@ -83,7 +83,8 @@ class _HomePageState extends State<HomePage> {
                 ),
                 TextFormField(
                   controller: contactController,
-                  maxLength: 12,
+                  maxLength: 18,
+                  keyboardType: TextInputType.phone,
                   decoration: const InputDecoration(
                     labelText: 'Nomor',
                     hintText: '+62...',
