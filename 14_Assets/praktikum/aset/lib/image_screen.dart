@@ -1,4 +1,5 @@
 import 'package:aset/halaman_baru.dart';
+import 'package:aset/halaman_image.dart';
 import 'package:flutter/material.dart';
 
 class ImageScreen extends StatelessWidget {
@@ -56,7 +57,7 @@ class ImageScreen extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
-                              HalamanBaru()), // Navigasi ke Halaman Gallery
+                              HalamanImage()), // Navigasi ke Halaman Gallery
                     ); // Tutup bottom sheet
                     // Tambahkan aksi lain yang sesuai di sini
                   },
