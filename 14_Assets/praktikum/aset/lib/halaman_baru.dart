@@ -7,7 +7,6 @@ class HalamanBaru extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
         appBar: AppBar(
           centerTitle: true,
           title: Text(
@@ -59,7 +58,7 @@ class HalamanBaru extends StatelessWidget {
           alignment: Alignment.topCenter,
           child: ElevatedButton(
               style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(Colors.black)),
+                  backgroundColor: MaterialStatePropertyAll(Colors.white)),
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => ImageScreen()),
@@ -70,7 +69,7 @@ class HalamanBaru extends StatelessWidget {
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                   fontSize: 30,
-                  color: Colors.red,
+                  color: Colors.amber,
                 ),
               )),
         ));
