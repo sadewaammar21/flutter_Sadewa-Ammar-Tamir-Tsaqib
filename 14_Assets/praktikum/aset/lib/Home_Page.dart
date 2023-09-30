@@ -35,7 +35,7 @@ class HalamanUtama extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            HomePage()), // Navigasi ke Halaman Kedua
+                            AddContact()), // Navigasi ke Halaman Kedua
                   );
                 },
                 title: const Text('Contact ')),

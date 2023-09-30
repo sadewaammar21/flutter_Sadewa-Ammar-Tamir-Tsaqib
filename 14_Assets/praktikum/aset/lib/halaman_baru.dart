@@ -34,7 +34,7 @@ class HalamanBaru extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
-                              HomePage()), // Navigasi ke Halaman Form
+                              AddContact()), // Navigasi ke Halaman Form
                     );
                   },
                   title: const Text('Contact ')),

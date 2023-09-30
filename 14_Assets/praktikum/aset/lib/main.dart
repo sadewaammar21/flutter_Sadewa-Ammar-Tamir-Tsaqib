@@ -1,9 +1,20 @@
 import 'package:aset/Home_Page.dart';
 import 'package:aset/halaman_form.dart';
+import 'package:aset/item.dart';
+import 'package:aset/prov_Page/provider_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Contact()),
+        ChangeNotifierProvider(create: (_) => ImageModel()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HalamanUtama(),
+      home: AddContact(),
     );
   }
 }

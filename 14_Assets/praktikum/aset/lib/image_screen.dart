@@ -1,10 +1,13 @@
 import 'package:aset/halaman_baru.dart';
 import 'package:aset/halaman_image.dart';
+import 'package:aset/prov_Page/provider_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ImageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final imageModel = Provider.of<ImageModel>(context); //provider
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -28,6 +31,7 @@ class ImageScreen extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
+              imageModel.selectImage(index);
               _showImageDialog(
                   context, index); // Tampilkan bottom sheet saat gambar di-tap
             },
@@ -39,6 +43,7 @@ class ImageScreen extends StatelessWidget {
   }
 
   void _showImageDialog(BuildContext context, int index) {
+    final imageModel = Provider.of<ImageModel>(context);
     showModalBottomSheet<void>(
       backgroundColor: Colors.amber,
       context: context,
@@ -54,6 +59,7 @@ class ImageScreen extends StatelessWidget {
                 FloatingActionButton(
                   onPressed: () {
                     // Aksi saat tombol "Ya" dipilih
+                    imageModel.selectImage(index); //provider
                     Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
