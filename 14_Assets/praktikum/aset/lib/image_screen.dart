@@ -1,13 +1,16 @@
+import 'package:aset/bloc/image_bloc.dart';
 import 'package:aset/halaman_baru.dart';
 import 'package:aset/halaman_image.dart';
 import 'package:aset/prov_Page/provider_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 class ImageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final imageModel = Provider.of<ImageModel>(context); //provider
+    // final imageModel = Provider.of<ImageModel>(context); //provider
+    final imageBloc = BlocProvider.of<ImageBloc>(context);
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -31,7 +34,7 @@ class ImageScreen extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              imageModel.selectImage(index);
+              imageBloc.add(ImageEvent.selectImage);
               _showImageDialog(
                   context, index); // Tampilkan bottom sheet saat gambar di-tap
             },
@@ -43,7 +46,8 @@ class ImageScreen extends StatelessWidget {
   }
 
   void _showImageDialog(BuildContext context, int index) {
-    final imageModel = Provider.of<ImageModel>(context);
+    // final imageModel = Provider.of<ImageModel>(context);
+    final imageBloc = BlocProvider.of<ImageBloc>(context);
     showModalBottomSheet<void>(
       backgroundColor: Colors.amber,
       context: context,
@@ -59,7 +63,8 @@ class ImageScreen extends StatelessWidget {
                 FloatingActionButton(
                   onPressed: () {
                     // Aksi saat tombol "Ya" dipilih
-                    imageModel.selectImage(index); //provider
+                    // imageModel.selectImage(index); //provider
+                    imageBloc.add(ImageEvent.selectImage);
                     Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
@@ -82,6 +87,16 @@ class ImageScreen extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class ImageScreen1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => ImageBloc(),
+      child: ImageScreen(),
     );
   }
 }
