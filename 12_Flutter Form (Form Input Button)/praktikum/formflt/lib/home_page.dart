@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:formflt/components/profile_sheet.dart';
 import './contact.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,6 +22,20 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Contact"),
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                showModalBottomSheet(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    context: context,
+                    builder: (context) {
+                      return const ProfilSheet();
+                    });
+              },
+              icon: const Icon(Icons.account_circle))
+        ],
       ),
       body: Center(
         child: Container(
@@ -67,23 +82,42 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 TextFormField(
-                  controller: nameController,
-                  decoration: const InputDecoration(
-                    labelText: 'name',
-                    hintText: 'Insert Your Name',
-                    filled: true,
-                    fillColor: Color.fromARGB(255, 244, 188, 246),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    controller: nameController,
+                    decoration: const InputDecoration(
+                      labelText: 'name',
+                      hintText: 'Insert Your Name',
+                      filled: true,
+                      fillColor: Color.fromARGB(255, 244, 188, 246),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
                     ),
-                  ),
-                ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'nama harus disii';
+                      }
+
+                      List<String> nameParts = value.split('');
+                      if (nameParts.length < 2) {
+                        return 'Nama Harus terdiri 2 kata';
+                      }
+                      for (String part in nameParts) {
+                        if (part[0] != part[0].toUpperCase()) {
+                          return 'Diawali kapital';
+                        }
+                        if (value.contains(RegExp(
+                            r'[0-9!@#$%^&*()_+={}\[\]:;"<>,.?/~`|\\]'))) {
+                          return 'Nama tidak boleh mengandung angka atau karakter khusus.';
+                        }
+                        return null;
+                      }
+                    }),
                 SizedBox(
                   height: 10.0,
                 ),
                 TextFormField(
                   controller: contactController,
-                  maxLength: 18,
+                  maxLength: 15,
                   keyboardType: TextInputType.phone,
                   decoration: const InputDecoration(
                     labelText: 'Nomor',
@@ -94,6 +128,17 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Nomor telepon harus diisi.';
+                    }
+
+                    if (!RegExp(r'^0\d{7,14}$').hasMatch(value)) {
+                      return 'Nomor telepon tidak valid. Pastikan dimulai dengan angka 0, terdiri dari 8-15 digit, dan hanya berisi angka.';
+                    }
+
+                    return null; // Validasi berhasil
+                  },
                 ),
                 SizedBox(height: 10),
                 Row(
@@ -115,6 +160,24 @@ class _HomePageState extends State<HomePage> {
                           }
                         },
                         child: Text('submit')),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          String name = nameController.text.trim();
+                          String contact = contactController.text.trim();
+                          if (name.isNotEmpty && contact.isNotEmpty) {
+                            setState(() {
+                              nameController.text = '';
+                              contactController.text = '';
+                              contacts[selectedIndex].name = name;
+                              contacts[selectedIndex].contact = contact;
+                              selectedIndex = -1;
+                            });
+                          }
+                        },
+                        child: const Text('update'))
                   ],
                 ),
                 const SizedBox(
@@ -177,6 +240,9 @@ class _HomePageState extends State<HomePage> {
                     //
                     nameController.text = contacts[index].name;
                     contactController.text = contacts[index].contact;
+                    setState(() {
+                      selectedIndex = index;
+                    });
                     //
                   }),
                   child: Icon(Icons.edit)),

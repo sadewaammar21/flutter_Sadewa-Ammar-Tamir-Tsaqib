@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:formflt/login/login_screen.dart';
 import './home_page.dart';
 
 void main() {
@@ -14,7 +15,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Contacs',
       theme: ThemeData(primarySwatch: Colors.purple),
-      home: const HomePage(),
+      routes: {
+        "/": (context) => const LoginScreen(),
+        "/homePage": (context) => const HomePage(),
+      },
     );
   }
 }
