@@ -47,15 +47,24 @@ class _ProfilSheetState extends State<ProfilSheet> {
               height: 20.0,
             ),
             Text(
-              "username",
+              "Username : ",
+              style: GoogleFonts.poppins(
+                  fontSize: 20, fontWeight: FontWeight.w600),
+            ),
+            Text(
+              "$username ",
               style: GoogleFonts.poppins(
                   fontSize: 20, fontWeight: FontWeight.w600),
             ),
             ElevatedButton(
                 onPressed: () {
-                  loginData.setBool("Login", true);
-                  loginData.remove("username");
-                  MaterialPageRoute(builder: (context) => const LoginScreen());
+                  loginData.setBool("login", true);
+                  loginData.remove("Username: ");
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    "/",
+                    (route) => false,
+                  );
                 },
                 child: const Text("Logout"))
           ],
