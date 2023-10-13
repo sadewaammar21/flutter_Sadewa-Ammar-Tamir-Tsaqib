@@ -1,0 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:testing/screen/home_page.dart';
+
+void main() {
+  testWidgets('Icon nya adalah', (WidgetTester tester) async {
+    // Bangun widget yang berisi ikon
+    await tester.pumpWidget(MaterialApp(home: HomePage()));
+
+    // Verifikasi apakah ikon telah ditampilkan
+    expect(find.byIcon(Icons.mobile_friendly), findsOneWidget);
+  });
+}
